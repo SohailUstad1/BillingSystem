@@ -20,16 +20,15 @@ public class CreateHtml {
 
 		List<String> lines = new ArrayList<String>();
 		try {
-			File obj1 = new File(o1Sohail);
-			File obj2 = new File(bill_html_Sohail);
+			File obj1 = new File(o1);
+			File obj2 = new File(bill_html);
 
 			if (!(obj1.exists())) {
 				obj1.createNewFile();
 			}
 			Scanner reader = new Scanner(obj2);
 			FileWriter writer = new FileWriter(
-					"Y:\\htmlbillls\\"
-							+ addeddOrder.getInvoice_number() + ".html");
+					o1Sohail);
 			while (reader.hasNextLine()) {
 				String data = reader.nextLine();
 				String line = "";
@@ -52,7 +51,7 @@ public class CreateHtml {
 					for (DescriptioOfGoods s : allDogs) {
 						
 						File obj3 = new File(
-								row_html_sohail);
+								row_html);
 						Scanner rows = new Scanner(obj3);
 						lines.add("<tr>");
 						while (rows.hasNextLine()) {
@@ -83,7 +82,7 @@ public class CreateHtml {
 						
 					}
 					for(int i=allDogs.size()+1;i<13;i++) {
-						File obj3 = new File(row_html_sohail);
+						File obj3 = new File(row_html);
 						Scanner rows = new Scanner(obj3);
 						
 						while (rows.hasNextLine()) {
@@ -100,7 +99,7 @@ public class CreateHtml {
 					for (Extra s : allExtra) {
 						
 						File obj4 = new File(
-								extra_html_sohail);
+								extra_html);
 						Scanner rows = new Scanner(obj4);
 						lines.add("<tr>");
 						while (rows.hasNextLine()) {

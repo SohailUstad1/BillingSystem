@@ -38,7 +38,7 @@ public class Download extends HttpServlet {
 		String filename=request.getParameter("in");
 		String pdfBills="Y:\\pdfbills\\"+filename+".pdf";
 		String pdfBillsSohail="F:\\Sampla\\bill\\"+filename+".pdf";
-		String filePath = pdfBillsSohail;
+		String filePath = pdfBills;
 		File downloadFile = new File(filePath);
 		FileInputStream inStream = new FileInputStream(downloadFile);
 

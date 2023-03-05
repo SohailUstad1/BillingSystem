@@ -14,18 +14,20 @@ import org.xhtmlrenderer.layout.SharedContext;
 public class HTML2PDF {
 	public static boolean convert2pdf(String fileName) throws IOException{
 		String htmlBillsPath="Y:\\htmlbillls\\"+fileName+".html";
+		String htmlBillsPathSohail="F:\\Sampla\\html\\"+fileName+".html";
 		String pdfBillsPath="Y:\\pdfbills\\"+fileName+".pdf";
+		String pdfBillsPathSohail="F:\\Sampla\\bill\\"+fileName+".pdf";
 		boolean status=false;
-		File htmlFile = new File("Y:\\htmlbillls\\"+fileName+".html");
+		File htmlFile = new File(htmlBillsPath);
         Document doc = Jsoup.parse(htmlFile,"UTF-8");
         doc.outputSettings().syntax(Document.OutputSettings.Syntax.xml);
         try {
-			OutputStream os = new FileOutputStream("Y:\\pdfbills\\"+fileName+".pdf");
+			OutputStream os = new FileOutputStream(pdfBillsPathSohail);
 			ITextRenderer renderer = new ITextRenderer();
 			SharedContext sharedContext = renderer.getSharedContext();
 			sharedContext.setPrint(true);
 			sharedContext.setInteractive(false);
-			String baseurl = FileSystems.getDefault().getPath("Y:\\pdfbills\\"+fileName+".pdf").toUri().toURL().toString();
+			String baseurl = FileSystems.getDefault().getPath(pdfBillsPathSohail).toUri().toURL().toString();
 			renderer.setDocumentFromString(doc.html(),baseurl);
 			renderer.layout();
 			renderer.createPDF(os);
