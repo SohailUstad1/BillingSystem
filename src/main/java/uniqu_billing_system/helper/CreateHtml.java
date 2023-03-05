@@ -13,14 +13,15 @@ import uniqu_billing_system.model.Order;
 public class CreateHtml {
 	public boolean createHtml(Order addeddOrder, List<DescriptioOfGoods> allDogs, List<Extra> allExtra) {
 		String o1="Y:\\htmlbillls\\"+ addeddOrder.getInvoice_number() + ".html";
+		String o1Sohail="F:\\Sampla\\html\\"+ addeddOrder.getInvoice_number() + ".html";
 		String bill_html="C:\\Users\\nazim\\Downloads\\BillingSystem\\src\\main\\webapp\\bill.html";
+		String bill_html_Sohail="F:\\Sampla\\bill.html";
 		boolean result = false;
 
 		List<String> lines = new ArrayList<String>();
 		try {
-			File obj1 = new File("Y:\\htmlbillls\\"
-					+ addeddOrder.getInvoice_number() + ".html");
-			File obj2 = new File("C:\\Users\\nazim\\Downloads\\BillingSystem\\src\\main\\webapp\\bill.html");
+			File obj1 = new File(o1Sohail);
+			File obj2 = new File(bill_html_Sohail);
 
 			if (!(obj1.exists())) {
 				obj1.createNewFile();
@@ -46,11 +47,12 @@ public class CreateHtml {
 				} else if (data.contains("grand_total")) {
 					line = data.replaceFirst(">", ">" + addeddOrder.getGrand_total().longValue());
 				} else if (data.contains("<begin>")) {
-
+					String row_html="C:\\Users\\nazim\\Downloads\\BillingSystem\\src\\main\\webapp\\row.html";
+					String row_html_sohail="F:\\Sampla\\row.html";
 					for (DescriptioOfGoods s : allDogs) {
-						String row_html="C:\\Users\\nazim\\Downloads\\BillingSystem\\src\\main\\webapp\\row.html";
+						
 						File obj3 = new File(
-								"C:\\Users\\nazim\\Downloads\\BillingSystem\\src\\main\\webapp\\row.html");
+								row_html_sohail);
 						Scanner rows = new Scanner(obj3);
 						lines.add("<tr>");
 						while (rows.hasNextLine()) {
@@ -81,8 +83,7 @@ public class CreateHtml {
 						
 					}
 					for(int i=allDogs.size()+1;i<13;i++) {
-						File obj3 = new File(
-								"C:\\Users\\nazim\\Downloads\\BillingSystem\\src\\main\\webapp\\row.html");
+						File obj3 = new File(row_html_sohail);
 						Scanner rows = new Scanner(obj3);
 						
 						while (rows.hasNextLine()) {
@@ -94,11 +95,12 @@ public class CreateHtml {
 					}
 
 				} else if (data.contains("<beginExtra>")) {
-
+					String extra_html="C:\\Users\\nazim\\Downloads\\BillingSystem\\src\\main\\webapp\\extra.html";
+					String extra_html_sohail="F:\\Sampla\\extra.html";
 					for (Extra s : allExtra) {
-						String extra_html="C:\\Users\\nazim\\Downloads\\BillingSystem\\src\\main\\webapp\\extra.html";
+						
 						File obj4 = new File(
-								"C:\\Users\\nazim\\Downloads\\BillingSystem\\src\\main\\webapp\\extra.html");
+								extra_html_sohail);
 						Scanner rows = new Scanner(obj4);
 						lines.add("<tr>");
 						while (rows.hasNextLine()) {
