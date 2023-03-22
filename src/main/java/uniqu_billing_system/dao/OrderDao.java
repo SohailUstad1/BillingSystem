@@ -71,7 +71,7 @@ public class OrderDao {
 		return o;
 	}
 	
-	public Order getOrder(String id) {
+	public static Order getOrder(String id) {
 		Order o=null;
 		try {
 			Connection con=new ConnectionProvider().getConnection();
@@ -98,7 +98,7 @@ public class OrderDao {
 		List<Order> orders=new ArrayList<Order>();
 		try {
 			Connection con=new ConnectionProvider().getConnection();
-			String query="select * from orders";
+			String query="select * from orders order by invoice_number desc";
 			Statement s=con.createStatement();
 			ResultSet res = s.executeQuery(query);
 			while(res.next()) {
@@ -229,6 +229,21 @@ public class OrderDao {
 			b=true;
 		} catch (Exception e) {
 			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return b;
+	}
+	
+	public static boolean deleteById(String in) {
+		boolean b=false;
+		try {
+			Connection con=new ConnectionProvider().getConnection();
+			String query="delete from orders where invoice_number="+in;
+			Statement s=con.createStatement();
+			s.executeUpdate(query);
+			con.close();
+			b=true;
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return b;

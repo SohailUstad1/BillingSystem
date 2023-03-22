@@ -32,7 +32,7 @@ public class ExtraDao {
 		return result;
 	}
 
-	public List<Extra> getExtraByInvoiceNumber(long iv) {
+	public static List<Extra> getExtraByInvoiceNumber(long iv) {
 		List<Extra> list = new ArrayList<Extra>();
 		try {
 			Connection con = new ConnectionProvider().getConnection();
@@ -57,4 +57,5 @@ public class ExtraDao {
 		}
 		return list;
 	}
+	
 }

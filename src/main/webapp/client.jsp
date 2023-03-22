@@ -64,6 +64,7 @@
 				<table class="table text-center">
 					<thead>
 						<tr>
+							<th></th>
 							<th scope="col">invoice number</th>
 							<th scope="col">order date</th>
 							<th scope="col">grand total</th>
@@ -75,8 +76,10 @@
 						for (Order o : OrderDao.getUnpaidOrdersByClientName(request.getParameter("clientName"))) {
 						%>
 						<tr>
+							<th><a href="edit.jsp?in=<%=o.getInvoice_number()%>"><img
+									style="height: 40px; border-radius: 2px" src="img/logo10.jpg"></a></th>
 							<th scope="row"><a
-								href="Download?in=<%=o.getInvoice_number()%>"><%=o.getInvoice_number()%></a></th>
+								href="viewOrder.jsp?in=<%=o.getInvoice_number()%>"><%=o.getInvoice_number()%></a></th>
 							<td><%=o.getOrder_date().toString().substring(0, 11)%></td>
 							<td><%=o.getGrand_total().longValue()%></td>
 							<td>
@@ -114,6 +117,7 @@
 				<table class="table table-dark table-striped text-center">
 					<thead>
 						<tr>
+							<th></th>
 							<th scope="col">invoice number</th>
 							<th scope="col">order date</th>
 							<th scope="col">grand total</th>
@@ -125,8 +129,10 @@
 						for (Order o : OrderDao.getPaidOrdersByClientName(request.getParameter("clientName"))) {
 						%>
 						<tr>
+							<th><a href="edit.jsp?in=<%=o.getInvoice_number()%>"><img
+									style="height: 40px; border-radius: 2px" src="img/logo10.jpg"></a></th>
 							<th scope="row"><a
-								href="Download?in=<%=o.getInvoice_number()%>"><%=o.getInvoice_number()%></a></th>
+								href="viewOrder.jsp?in=<%=o.getInvoice_number()%>"><%=o.getInvoice_number()%></a></th>
 							<td><%=o.getOrder_date().toString().substring(0, 11)%></td>
 							<td><%=o.getGrand_total().longValue()%></td>
 							<td>
